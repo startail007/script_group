@@ -217,7 +217,9 @@ function CaiMap(pMapFrame, pMapImage, pType) {
         ClearA();
         unRefresh();
         ZoomA(scale + 0.25 * Delta(e), e.pageX, e.pageY, 600);
-        Refresh()
+        Refresh();
+        
+        
     }
 
     var old_TP;
@@ -236,7 +238,7 @@ function CaiMap(pMapFrame, pMapImage, pType) {
             old_TP = TP;
             if (EndVelocity.len() > 2) {
                 e.preventDefault();
-            }
+            }            
         }
     }
 
@@ -245,11 +247,11 @@ function CaiMap(pMapFrame, pMapImage, pType) {
         old_TP = new Point(e.pageX, e.pageY);
         old_MP = new Point(Prop.MapPosX, Prop.MapPosY);
         EndVelocity = new Point();
-        MDBool = true;
+        MDBool = true;    
     }
 
     function MU(e) {
-        if (MDBool) {
+        if (MDBool) {            
             MDBool = false
             if (EndVelocity.len() > 2) {
                 var MapPos = new Point(Prop.MapPosX, Prop.MapPosY);
@@ -316,7 +318,8 @@ function CaiMap(pMapFrame, pMapImage, pType) {
     }
 
     function Refresh() {
-        MapImage.style.scale = 1 + "px";
+        MapImage.style.transform = "scale(1, 1)";
+        //MapImage.style.scale = 1 + "px";
         MapImage.style.width = Prop.MapWidth + "px";
         MapImage.style.height = Prop.MapHeight + "px";
         sss = 1;
@@ -342,7 +345,8 @@ function CaiMap(pMapFrame, pMapImage, pType) {
             scale0 = ZoomMin;
         }
         scale = scale0;
-        MapImage.style.scale = scale / sss + "px";
+        MapImage.style.transform = "scale("+scale / sss+", "+scale / sss+")";
+        //MapImage.style.scale = scale / sss + "px";
         SetPos((ww * scale / s) + xx, (hh * scale / s) + yy);
         myEvents.fireEvent("Zoom");
     }
