@@ -296,7 +296,6 @@ function CaiMap(pMapFrame, pMapImage, pType) {
         old_TP = TouchesPoint(e.touches);
         old_MP = new Point(Prop.MapPosX, Prop.MapPosY);
         EndVelocity = new Point();
-        MapImage.stop();
     }
 
     function TE(e) {
